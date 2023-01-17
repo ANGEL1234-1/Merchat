@@ -50,9 +50,9 @@ public class ChatController {
                 while (userInChat) {
                     try {
                         tvChat.appendText(input.readLine() + "\n");
-                    } catch (IOException | NullPointerException e) {
+                    } catch (Exception e) {
                         userInChat = false;
-                        tvChat.appendText("ERROR: CONNECTION WITH SERVER LOST");
+                        tvChat.appendText("> ERROR: CONNECTION WITH SERVER LOST\n");
                         System.out.println(e);
                     }
                 }
@@ -62,10 +62,9 @@ public class ChatController {
                 userInChat = false;
                 socket.close();
             } catch (IOException ex) {
-                System.out.println(e);
+                System.out.println(ex);
             }
             System.out.println(e);
-            throw new RuntimeException(e);
         }
     }
 

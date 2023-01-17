@@ -9,11 +9,9 @@
         <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </padding>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <items>
-          <Button mnemonicParsing="false" onAction="#onBtnGoBackClicked" text="Go back" />
-        </items>
-      </ToolBar>
+        <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <Button mnemonicParsing="false" onAction="#onBtnGoBackClicked" text="Go back"/>
+        </ToolBar>
         <TextArea fx:id="tvChat" editable="false" wrapText="true" VBox.vgrow="ALWAYS" />
         <TextField fx:id="txtChat" onKeyPressed="#onTxtChatKeyPressed" promptText="Type here" VBox.vgrow="ALWAYS" />
     </VBox>

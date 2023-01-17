@@ -1,6 +1,7 @@
 package com.merchat.controller;
 
 import com.merchat.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,6 +38,29 @@ public class LogInController {
 
                 stage.setScene(sceneChat);
                 stage.show();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void onHostButtonClick() {
+        if (txtUsername.getText().equals("")) {
+            tvLogIn.setText("Username can't be empty");
+        } else {
+            try {
+                stage = (Stage) root.getScene().getWindow();
+
+                stage.getProperties().put("username", txtUsername.getText());
+
+                FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/host-chat.fxml"));
+                Scene sceneChat = new Scene(fxmlChatLoader.load());
+
+                stage.close();
+                stage.setScene(sceneChat);
+                stage.show();
+
+                ((HostChatController)fxmlChatLoader.getController()).start();
             } catch (IOException e) {
                 System.out.println(e);
             }

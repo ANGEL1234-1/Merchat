@@ -12,7 +12,7 @@
         <Label text="Welcome to Merchat, pick an username" />
         <HBox alignment="CENTER">
             <Label prefWidth="60.0" text="Username" textAlignment="CENTER" />
-            <TextField fx:id="txtUsername" prefWidth="125.0"/>
+            <TextField fx:id="txtUsername" prefWidth="125.0" />
         </HBox>
         <Label fx:id="tvLogIn" text="What would you like to do?" />
         <HBox alignment="CENTER">
@@ -21,7 +21,7 @@
                     <Insets left="20.0" right="20.0" />
                 </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefWidth="45.0" text="Host">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onHostButtonClick" prefWidth="45.0" text="Host">
                 <HBox.margin>
                     <Insets left="20.0" right="20.0" />
                 </HBox.margin>
