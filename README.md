@@ -4,7 +4,7 @@ Programa con GUI que permite la conectarse a un servidor de chat. Esta pensado p
 
 # Cómo usar
 
-Hacer doble click sobre el .jar, introducir un nombre de usuario, decidir si unirse o crear un servidor (actualmente sólo se puede unir) y decidir si unirse de forma manual (introduciendo una IP) o buscar servidores disponibles (actualmente sólo se puede unir de forma manual.)
+Hacer doble click sobre el .jar, introducir un nombre de usuario y decidir si unirse o crear un servidor. Si se ha elegido unirse tiene que decidirse si hacerlo  de forma manual (introduciendo una IP) o buscar servidores disponibles (actualmente sólo se puede unir de forma manual.)
 
 # Special Thanks to
 
