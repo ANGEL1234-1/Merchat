@@ -47,15 +47,29 @@ public class ChatController {
             output.println(stage.getProperties().get("username"));
 
             new Thread(() -> {
+                String msg;
+
                 while (userInChat) {
                     try {
-                        tvChat.appendText(input.readLine() + "\n");
+                        msg = input.readLine();
+                        if (msg.equals(null)) {
+                            userInChat = false;
+                        } else {
+                            tvChat.appendText(msg + "\n");
+                        }
                     } catch (Exception e) {
                         userInChat = false;
                         tvChat.appendText("> ERROR: CONNECTION WITH SERVER LOST\n");
                         System.out.println(e);
                     }
                 }
+
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+                output.close();
             }).start();
         } catch (IOException e) {
             try {
@@ -85,6 +99,12 @@ public class ChatController {
 
     public void onBtnGoBackClicked() {
         userInChat = false;
+        try {
+            input.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        output.close();
         try {
             socket.close();
         } catch (IOException e) {
