@@ -2,13 +2,16 @@ package com.merchat.controller;
 
 import com.merchat.Main;
 import com.merchat.model.ClientThread;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +25,9 @@ public class HostChatController {
     private String username;
     private ServerSocket serverSocket;
     private ArrayList<ClientThread> clients = new ArrayList<>();
+    private ContextMenu userOptions = new ContextMenu();
+    private MenuItem kick = new MenuItem("Kick user");
+    private Label selectedLabel;
 
 
     @FXML
@@ -32,16 +38,23 @@ public class HostChatController {
     private TextField txtChat;
     @FXML
     private Accordion acrdServerTools;
+    @FXML
+    public RadioButton rbtSpeak;
+    @FXML
+    public RadioButton rbtBroadcast;
+    @FXML
+    private VBox paneUsers;
 
-
-    public ArrayList<ClientThread> getClients() {
-        return clients;
-    }
 
     public void start() {
-
         try {
             username = root.getScene().getWindow().getProperties().get("username").toString();
+            userOptions.getItems().add(kick);
+
+            kick.setOnAction(e -> {
+                clients.get(paneUsers.getChildren().indexOf(selectedLabel)).close();
+                System.out.println("Auch");
+            });
 
             serverSocket = new ServerSocket(54321);
             tvChat.appendText("> Server online\n");
@@ -52,6 +65,14 @@ public class HostChatController {
                         socket = serverSocket.accept();
                         clients.add(new ClientThread(this, socket));
                         clients.get(clients.size() - 1).start();
+                        Platform.runLater(() -> {
+                            try {
+                                Thread.sleep(250);
+                            } catch (InterruptedException e) {
+                                System.out.println(e);
+                            }
+                            addUser();
+                        });
                     } catch (IOException e) {
                         System.out.println("No se pudo aceptar la conexion");
                     }
@@ -63,12 +84,38 @@ public class HostChatController {
     }
 
 
+    public ArrayList<ClientThread> getClients() {
+        return clients;
+    }
+
+    public VBox getPaneUsers() {
+        return paneUsers;
+    }
+
+    private void addUser() {
+        paneUsers.getChildren().add(new Label(clients.get(clients.size() - 1).getUname()));
+        ((Label) paneUsers.getChildren().get(paneUsers.getChildren().size() - 1)).setContextMenu(userOptions);
+        clients.get(clients.size() - 1).setLabel((Label) paneUsers.getChildren().get(paneUsers.getChildren().size() - 1));
+
+        paneUsers.getChildren().get(paneUsers.getChildren().size() - 1).setOnMouseClicked(e -> {
+            if (e.getButton() == MouseButton.SECONDARY) {
+                selectedLabel = (Label) e.getSource();
+            }
+        });
+    }
+
+
     public void onTxtChatKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             if (!txtChat.getText().equals("")) {
                 if (!txtChat.getText().equals("\\exit")) {
-                    tvChat.appendText(txtChat.getText() + "\n");
-                    broadcast(username, txtChat.getText());
+                    if (rbtSpeak.isSelected()) {
+                        tvChat.appendText(txtChat.getText() + "\n");
+                        broadcast(username, txtChat.getText());
+                    } else {
+                        tvChat.appendText("SERVER: " + txtChat.getText().toUpperCase() + "\n");
+                        broadcast("SERVER", txtChat.getText().toUpperCase());
+                    }
                     txtChat.setText("");
                 } else {
                     onBtnGoBackClicked();
