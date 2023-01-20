@@ -100,12 +100,6 @@ public class ChatController {
     public void onBtnGoBackClicked() {
         userInChat = false;
         try {
-            input.close();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        output.close();
-        try {
             socket.close();
         } catch (IOException e) {
             System.out.println(e);
