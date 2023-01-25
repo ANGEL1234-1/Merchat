@@ -3,11 +3,10 @@ package com.merchat;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.Socket;
 
 public class Main extends Application {
     @Override
@@ -17,6 +16,7 @@ public class Main extends Application {
         Scene sceneLogIn = new Scene(fxmlLogInLoader.load());
 
         stage.setTitle("Merchat");
+        stage.getIcons().add(new Image(getClass().getResource("images/icon.png").toExternalForm()));
         stage.setScene(sceneLogIn);
         stage.setResizable(false);
         stage.show();
