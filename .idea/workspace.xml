@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="chore: removed &quot;\exit&quot; way of exiting the chat">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" afterDir="false" />
+    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="fix: Fixed bug where even if the server was full the username of the person who tried to connect to the server was added to the user list">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,7 @@
       <workItem from="1674220109064" duration="1045000" />
       <workItem from="1674474066578" duration="4819000" />
       <workItem from="1674561180585" duration="3584000" />
-      <workItem from="1674630885530" duration="4852000" />
+      <workItem from="1674630885530" duration="5256000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Added the possibility of hosting a chat">
       <created>1673959939192</created>
@@ -181,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674634216713</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix: Fixed bug where even if the server was full the username of the person who tried to connect to the server was added to the user list">
+      <created>1674635836248</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674635836248</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +229,8 @@
     <MESSAGE value="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name." />
     <MESSAGE value="fix: Fixed bug that made the maximum connections the amount specified minus 1 (i.e. if 1 connection was specified 0 connections were available, if 3 were then only 2 were available)" />
     <MESSAGE value="chore: removed &quot;\exit&quot; way of exiting the chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: removed &quot;\exit&quot; way of exiting the chat" />
+    <MESSAGE value="fix: Fixed bug where even if the server was full the username of the person who tried to connect to the server was added to the user list" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Fixed bug where even if the server was full the username of the person who tried to connect to the server was added to the user list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
