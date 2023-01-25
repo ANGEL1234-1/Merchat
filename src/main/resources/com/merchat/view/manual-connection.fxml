@@ -5,16 +5,21 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.merchat.controller.ManualConnectionController">
-    <VBox alignment="CENTER" spacing="10.0">
+    <VBox alignment="CENTER" prefHeight="154.0" prefWidth="250.0" spacing="10.0">
         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
         </padding>
-        <Label text="Enter an IP address" />
+        <Label fx:id="tvLogIn" text="Enter an IP address" />
         <HBox alignment="CENTER">
             <Label prefWidth="75.0" text="IP Address" textAlignment="CENTER" />
             <TextField fx:id="txtIp" prefWidth="135.0" />
         </HBox>
-        <Label fx:id="tvLogIn" />
+      <HBox alignment="CENTER">
+         <children>
+            <Label prefWidth="75.0" text="Port" textAlignment="CENTER" />
+            <TextField fx:id="txtPort" prefWidth="135.0" promptText="Defaut: 54321" />
+         </children>
+      </HBox>
         <HBox alignment="CENTER">
             <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackButtonClick" prefWidth="45.0" text="Back">
                 <HBox.margin>

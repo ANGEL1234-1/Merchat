@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -21,7 +22,8 @@ import java.util.regex.Pattern;
 
 public class ManualConnectionController {
     private String ip;
-    private final int PORT = 54321;
+    private int port;
+    private final int DEFAULT_PORT = 54321;
 
 
     private final String ZERO_TO_255 = "(\\d{1,2}|(0|1)\\d{2}|2[0-4]\\d|25[0-5])";
@@ -36,6 +38,8 @@ public class ManualConnectionController {
     @FXML
     private TextField txtIp;
     @FXML
+    private TextField txtPort;
+    @FXML
     private Button btnBack;
     @FXML
     private Button btnConnect;
@@ -45,16 +49,35 @@ public class ManualConnectionController {
     
     @FXML
     protected void onConnectButtonClick() {
-        ip = txtIp.getText();
-        matcherIp = PATTERN_IP.matcher(ip);
+        try {
+            ip = txtIp.getText();
+            matcherIp = PATTERN_IP.matcher(ip);
+            if (!txtPort.getText().isEmpty()) {
+                port = Integer.parseInt(txtPort.getText());
+            } else {
+                port = DEFAULT_PORT;
+            }
 
-        if (matcherIp.matches()) {
-            tvLogIn.setText("");
-            btnConnect.setDisable(true);
-            btnBack.setDisable(true);
-            createConnection();
-        } else {
-            tvLogIn.setText("The IP introduced is not correct!");
+            if (port < 49152 || port > 65535) {
+                tvLogIn.setVisible(true);
+                tvLogIn.setManaged(true);
+                tvLogIn.setText("Port isn't between 49152-65535");
+            } else {
+                if (matcherIp.matches()) {
+                    tvLogIn.setText("");
+                    btnConnect.setDisable(true);
+                    btnBack.setDisable(true);
+                    createConnection();
+                } else {
+                    tvLogIn.setVisible(true);
+                    tvLogIn.setManaged(true);
+                    tvLogIn.setText("The IP introduced is not correct!");
+                }
+            }
+        } catch (NumberFormatException e) {
+            tvLogIn.setVisible(true);
+            tvLogIn.setManaged(true);
+            tvLogIn.setText("The port isn't a number!");
         }
     }
 
@@ -62,7 +85,7 @@ public class ManualConnectionController {
         // Create a thread to perform this task so the application doesn't freeze while making the connection
         new Thread(() -> {
             try {
-                socket = new Socket(ip, PORT);
+                socket = new Socket(ip, port);
 
                 Platform.runLater(() -> {
                     try {
@@ -95,8 +118,8 @@ public class ManualConnectionController {
 
     public void onBackButtonClick() {
         try {
-            FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/join-type.fxml"));
-            Scene sceneChat = new Scene(fxmlChatLoader.load());
+            FXMLLoader fxmlJoinTypeLoader = new FXMLLoader(Main.class.getResource("view/join-type.fxml"));
+            Scene sceneChat = new Scene(fxmlJoinTypeLoader.load());
             Stage stage = (Stage) root.getScene().getWindow();
 
             stage.setScene(sceneChat);

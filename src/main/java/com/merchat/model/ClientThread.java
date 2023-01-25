@@ -4,10 +4,7 @@ import com.merchat.controller.HostChatController;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class ClientThread extends Thread {
@@ -45,29 +42,51 @@ public class ClientThread extends Thread {
     @Override
     public void run() {
         try {
+            boolean correctPswd = false;
+
             input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             output = new PrintWriter(socket.getOutputStream(), true);
 
             uname = input.readLine();
+            output.println(server.getServerConf().getServerName());
+            if (server.getClients().size() < server.getServerConf().getMaxCon() || server.getServerConf().getMaxCon() == -1) {
+                output.println("avaliableSpacesLeft");
 
-            try {
-                String msg = "";
-                server.broadcast(uname + " has just connected, say hi [" + (server.getClients().size() + 1) + " user connected as of right now]");
-                onLoop = true;
+                if (!server.getServerConf().getPswd().equals("")) {
+                    output.println("serverProtectedByPassword");
+                    correctPswd = server.getServerConf().getPswd().equals(input.readLine());
+                    if (!correctPswd) {
+                        close();
+                    }
+                } else {
+                    output.println("serverNotProtectedByPassword");
+                    correctPswd = true;
+                }
 
-                while (onLoop) {
-                    msg = input.readLine();
-                    if (msg.equals("\\exit")) {
-                        onLoop = false;
-                    } else {
-                        server.broadcast(this, uname, msg);
+                if (correctPswd) {
+                    try {
+                        String msg = "";
+                        server.broadcast(uname + " has just connected, say hi [" + (server.getClients().size() + 1) + " user connected as of right now]");
+                        onLoop = true;
+
+                        while (onLoop) {
+                            msg = input.readLine();
+                            if (msg.equals("\\exit")) {
+                                onLoop = false;
+                            } else {
+                                server.broadcast(this, uname, msg);
+                            }
+                        }
+                    } catch (IOException | NullPointerException e) {
+                        System.out.println(e);
+                    } finally {
+                        close();
+                        server.broadcast("> User " + uname + " disconected [" + (server.getClients().size() + 1) + " user remaining]");
                     }
                 }
-            } catch (IOException | NullPointerException e) {
-                System.out.println(e);
-            } finally {
+            } else {
+                output.println("noAvaliableSpacesLeft");
                 close();
-                server.broadcast("> User " + uname + " disconected [" + (server.getClients().size() + 1) + " user remaining]");
             }
         } catch (IOException e) {
             server.getClients().remove(this);

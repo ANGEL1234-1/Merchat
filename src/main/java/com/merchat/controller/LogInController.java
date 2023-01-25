@@ -35,8 +35,8 @@ public class LogInController {
 
                 stage.getProperties().put("username", txtUsername.getText());
 
-                FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/join-type.fxml"));
-                Scene sceneChat = new Scene(fxmlChatLoader.load());
+                FXMLLoader fxmlJoinTypeLoader = new FXMLLoader(Main.class.getResource("view/join-type.fxml"));
+                Scene sceneChat = new Scene(fxmlJoinTypeLoader.load());
 
                 stage.setScene(sceneChat);
                 stage.show();
@@ -55,11 +55,11 @@ public class LogInController {
 
                 stage.getProperties().put("username", txtUsername.getText());
 
-                FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/host-chat.fxml"));
-                Scene sceneChat = new Scene(fxmlChatLoader.load());
+                FXMLLoader fxmlHostTypeLoader = new FXMLLoader(Main.class.getResource("view/host-type.fxml"));
+                Scene sceneHostType = new Scene(fxmlHostTypeLoader.load());
 
                 stage.close();
-                stage.setScene(sceneChat);
+                stage.setScene(sceneHostType);
                 stage.show();
             } catch (IOException e) {
                 System.out.println(e);

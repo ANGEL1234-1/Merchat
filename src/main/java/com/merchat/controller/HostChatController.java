@@ -2,6 +2,7 @@ package com.merchat.controller;
 
 import com.merchat.Main;
 import com.merchat.model.ClientThread;
+import com.merchat.model.ServerConf;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,7 @@ public class HostChatController {
     private final MenuItem kick = new MenuItem("Kick user");
     private final MenuItem whisper = new MenuItem("Whisper");
     private Label selectedLabel;
+    private ServerConf serverConf;
 
 
     @FXML
@@ -50,8 +52,10 @@ public class HostChatController {
     private VBox paneUsers;
 
 
-    public void start() {
+    public void start(ServerConf serverConf) {
         try {
+            this.serverConf = serverConf;
+
             username = root.getScene().getWindow().getProperties().get("username").toString();
             userOptions.getItems().add(kick);
             userOptions.getItems().add(whisper);
@@ -85,23 +89,28 @@ public class HostChatController {
                 dlgWhisper.show();
             });
 
-            serverSocket = new ServerSocket(54321);
+            serverSocket = new ServerSocket(this.serverConf.getPort());
             tvChat.appendText("> Server online\n");
             new Thread(() -> {
                 while (hosting) {
                     Socket socket;
                     try {
                         socket = serverSocket.accept();
-                        clients.add(new ClientThread(this, socket));
-                        clients.get(clients.size() - 1).start();
-                        Platform.runLater(() -> {
-                            try {
-                                Thread.sleep(250);
-                            } catch (InterruptedException e) {
-                                System.out.println(e);
-                            }
-                            addUser();
-                        });
+
+                        if (serverConf.getMaxCon() == -1 || clients.size() < serverConf.getMaxCon()) {
+                            clients.add(new ClientThread(this, socket));
+                            clients.get(clients.size() - 1).start();
+                            Platform.runLater(() -> {
+                                try {
+                                    Thread.sleep(250);
+                                } catch (InterruptedException e) {
+                                    System.out.println(e);
+                                }
+                                addUser();
+                            });
+                        } else {
+                            socket.close();
+                        }
                     } catch (IOException e) {
                         System.out.println("No se pudo aceptar la conexion");
                     }
@@ -119,6 +128,10 @@ public class HostChatController {
 
     public VBox getPaneUsers() {
         return paneUsers;
+    }
+
+    public ServerConf getServerConf() {
+        return serverConf;
     }
 
     private void addUser() {
@@ -164,8 +177,8 @@ public class HostChatController {
         }
 
         try {
-            FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/log-in.fxml"));
-            Scene sceneChat = new Scene(fxmlChatLoader.load());
+            FXMLLoader fxmlLogInLoader = new FXMLLoader(Main.class.getResource("view/log-in.fxml"));
+            Scene sceneChat = new Scene(fxmlLogInLoader.load());
             Stage stage = (Stage) root.getScene().getWindow();
 
             stage.close();

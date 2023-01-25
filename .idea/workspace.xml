@@ -9,16 +9,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="fix: Fix a bug where loosing connection could mean having the program freeze on the client side">
+    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostTypeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchat/model/ServerConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/host-type.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/JoinTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/JoinTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ManualConnectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ManualConnectionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/host-chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/host-chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/join-type.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/join-type.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/log-in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/log-in.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/manual-connection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/manual-connection.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,14 +63,22 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/a21angelma/ANGELMONROY/PENDRIVE/KINGSTON/DAM_2022-2023_PSP/Project Felix/Merchat&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\PENDRIVE\KINGSTON\DAM_2022-2023_PSP\Project Felix\Merchat\src\main\resources\com\merchat\view" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.merchat.Launcher" />
       <module name="Merchat" />
       <extension name="coverage">
@@ -84,7 +110,11 @@
       <workItem from="1673956436467" duration="3938000" />
       <workItem from="1674115167703" duration="2280000" />
       <workItem from="1674198960479" duration="11534000" />
-      <workItem from="1674212592743" duration="4170000" />
+      <workItem from="1674212592743" duration="7420000" />
+      <workItem from="1674220109064" duration="1045000" />
+      <workItem from="1674474066578" duration="4819000" />
+      <workItem from="1674561180585" duration="3584000" />
+      <workItem from="1674630885530" duration="1540000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Added the possibility of hosting a chat">
       <created>1673959939192</created>
@@ -107,7 +137,42 @@
       <option name="project" value="LOCAL" />
       <updated>1674216761206</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: Added server tools for the host to kick users and broadcast messages">
+      <created>1674216944786</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674216944786</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix: Fixed a bug where the program could freeze when trying to exit">
+      <created>1674218828142</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674218828142</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: Added the ability to whisper to the server tools">
+      <created>1674631456826</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674631456826</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: Added (provisional) icon to application">
+      <created>1674631581043</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674631581043</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)">
+      <created>1674631876960</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674631876960</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,11 +188,31 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: Added the possibility of hosting a chat" />
     <MESSAGE value="fix: Fix a bug where loosing connection could mean having the program freeze on the client side" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: Fix a bug where loosing connection could mean having the program freeze on the client side" />
+    <MESSAGE value="feat: Added server tools for the host to kick users and broadcast messages" />
+    <MESSAGE value="fix: Fixed a bug where the program could freeze when trying to exit" />
+    <MESSAGE value="feat: Added the ability to whisper to the server tools" />
+    <MESSAGE value="feat: Added (provisional) icon to application" />
+    <MESSAGE value="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -14,8 +14,8 @@ public class JoinTypeController {
 
     public void onBackButtonClick() {
         try {
-            FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/log-in.fxml"));
-            Scene sceneChat = new Scene(fxmlChatLoader.load());
+            FXMLLoader fxmlLogInLoader = new FXMLLoader(Main.class.getResource("view/log-in.fxml"));
+            Scene sceneChat = new Scene(fxmlLogInLoader.load());
             Stage stage = (Stage) root.getScene().getWindow();
 
             stage.setScene(sceneChat);
@@ -27,8 +27,8 @@ public class JoinTypeController {
 
     public void onManualButtonClick() {
         try {
-            FXMLLoader fxmlChatLoader = new FXMLLoader(Main.class.getResource("view/manual-connection.fxml"));
-            Scene sceneChat = new Scene(fxmlChatLoader.load());
+            FXMLLoader fxmlManualConnectionLoader = new FXMLLoader(Main.class.getResource("view/manual-connection.fxml"));
+            Scene sceneChat = new Scene(fxmlManualConnectionLoader.load());
             Stage stage = (Stage) root.getScene().getWindow();
 
             stage.setScene(sceneChat);
