@@ -97,20 +97,16 @@ public class HostChatController {
                     try {
                         socket = serverSocket.accept();
 
-                        if (serverConf.getMaxCon() == -1 || clients.size() < serverConf.getMaxCon()) {
-                            clients.add(new ClientThread(this, socket));
-                            clients.get(clients.size() - 1).start();
-                            Platform.runLater(() -> {
-                                try {
-                                    Thread.sleep(250);
-                                } catch (InterruptedException e) {
-                                    System.out.println(e);
-                                }
-                                addUser();
-                            });
-                        } else {
-                            socket.close();
-                        }
+                        clients.add(new ClientThread(this, socket));
+                        clients.get(clients.size() - 1).start();
+                        Platform.runLater(() -> {
+                            try {
+                                Thread.sleep(250);
+                            } catch (InterruptedException e) {
+                                System.out.println(e);
+                            }
+                            addUser();
+                        });
                     } catch (IOException e) {
                         System.out.println("No se pudo aceptar la conexion");
                     }

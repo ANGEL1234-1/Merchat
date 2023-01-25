@@ -49,7 +49,7 @@ public class ClientThread extends Thread {
 
             uname = input.readLine();
             output.println(server.getServerConf().getServerName());
-            if (server.getClients().size() < server.getServerConf().getMaxCon() || server.getServerConf().getMaxCon() == -1) {
+            if (server.getClients().size() <= server.getServerConf().getMaxCon() || server.getServerConf().getMaxCon() == -1) {
                 output.println("avaliableSpacesLeft");
 
                 if (!server.getServerConf().getPswd().equals("")) {

@@ -9,22 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostTypeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchat/model/ServerConf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/host-type.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/JoinTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/JoinTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ManualConnectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ManualConnectionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/join-type.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/join-type.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/log-in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/log-in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/merchat/view/manual-connection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/merchat/view/manual-connection.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +102,7 @@
       <workItem from="1674220109064" duration="1045000" />
       <workItem from="1674474066578" duration="4819000" />
       <workItem from="1674561180585" duration="3584000" />
-      <workItem from="1674630885530" duration="1540000" />
+      <workItem from="1674630885530" duration="2408000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Added the possibility of hosting a chat">
       <created>1673959939192</created>
@@ -172,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674631876960</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name.">
+      <created>1674632554561</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674632554561</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +207,8 @@
     <MESSAGE value="feat: Added the ability to whisper to the server tools" />
     <MESSAGE value="feat: Added (provisional) icon to application" />
     <MESSAGE value="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)" />
+    <MESSAGE value="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
