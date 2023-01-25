@@ -27,6 +27,8 @@ public class LogInController {
     public void onJoinButtonClick() {
         if (txtUsername.getText().equals("")) {
             tvLogIn.setText("Username can't be empty");
+        } else if (txtUsername.getText().contains(" ")) {
+            tvLogIn.setText("Username can't contain spaces");
         } else {
             try {
                 stage = (Stage) root.getScene().getWindow();
@@ -59,8 +61,6 @@ public class LogInController {
                 stage.close();
                 stage.setScene(sceneChat);
                 stage.show();
-
-                ((HostChatController)fxmlChatLoader.getController()).start();
             } catch (IOException e) {
                 System.out.println(e);
             }
