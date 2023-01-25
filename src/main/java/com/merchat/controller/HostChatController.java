@@ -105,7 +105,6 @@ public class HostChatController {
                             } catch (InterruptedException e) {
                                 System.out.println(e);
                             }
-                            addUser();
                         });
                     } catch (IOException e) {
                         System.out.println("No se pudo aceptar la conexion");
@@ -130,8 +129,8 @@ public class HostChatController {
         return serverConf;
     }
 
-    private void addUser() {
-        paneUsers.getChildren().add(new Label(clients.get(clients.size() - 1).getUname()));
+    public synchronized void addUser(ClientThread client) {
+        paneUsers.getChildren().add(new Label(client.getUname()));
         ((Label) paneUsers.getChildren().get(paneUsers.getChildren().size() - 1)).setContextMenu(userOptions);
         clients.get(clients.size() - 1).setLabel((Label) paneUsers.getChildren().get(paneUsers.getChildren().size() - 1));
 

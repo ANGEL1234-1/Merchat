@@ -66,6 +66,7 @@ public class ClientThread extends Thread {
                 if (correctPswd) {
                     try {
                         String msg = "";
+                        Platform.runLater(() -> server.addUser(this));
                         server.broadcast(uname + " has just connected, say hi [" + (server.getClients().size() + 1) + " user connected as of right now]");
                         onLoop = true;
 
