@@ -5,6 +5,8 @@ import com.merchat.model.ClientThread;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -12,6 +14,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,9 +27,10 @@ public class HostChatController {
     private boolean treeIsVisible = false;
     private String username;
     private ServerSocket serverSocket;
-    private ArrayList<ClientThread> clients = new ArrayList<>();
-    private ContextMenu userOptions = new ContextMenu();
-    private MenuItem kick = new MenuItem("Kick user");
+    private final ArrayList<ClientThread> clients = new ArrayList<>();
+    private final ContextMenu userOptions = new ContextMenu();
+    private final MenuItem kick = new MenuItem("Kick user");
+    private final MenuItem whisper = new MenuItem("Whisper");
     private Label selectedLabel;
 
 
@@ -50,10 +54,35 @@ public class HostChatController {
         try {
             username = root.getScene().getWindow().getProperties().get("username").toString();
             userOptions.getItems().add(kick);
+            userOptions.getItems().add(whisper);
 
             kick.setOnAction(e -> {
+                whisper(clients.get(paneUsers.getChildren().indexOf(selectedLabel)), "You have been kicked");
                 clients.get(paneUsers.getChildren().indexOf(selectedLabel)).close();
-                System.out.println("Auch");
+            });
+            whisper.setOnAction(e -> {
+                Stage stage = (Stage) root.getScene().getWindow();
+
+                Stage dlgWhisper = new Stage();
+                dlgWhisper.setTitle("Whisper to " + clients.get(paneUsers.getChildren().indexOf(selectedLabel)).getUname());
+                dlgWhisper.setResizable(false);
+                dlgWhisper.initOwner(stage);
+                dlgWhisper.initModality(Modality.WINDOW_MODAL);
+                Label tvdlgWhisper = new Label("What do you want to whisper");
+                TextField txtPswd = new TextField();
+                Button btndlgWhisper = new Button("Send");
+                btndlgWhisper.setOnAction(event -> {
+                    whisper(clients.get(paneUsers.getChildren().indexOf(selectedLabel)), txtPswd.getText());
+                    dlgWhisper.close();
+                });
+                VBox container = new VBox(tvdlgWhisper, txtPswd, btndlgWhisper);
+                container.setAlignment(Pos.CENTER);
+                container.setPadding(new Insets(20));
+                container.setSpacing(10);
+                dlgWhisper.setScene(new Scene(container));
+                dlgWhisper.setWidth(250);
+                dlgWhisper.setHeight(150);
+                dlgWhisper.show();
             });
 
             serverSocket = new ServerSocket(54321);
@@ -179,5 +208,10 @@ public class HostChatController {
         for (ClientThread client: clients) {
             client.getOutput().println(msg);
         }
+    }
+
+    public void whisper(ClientThread clientThread, String msg) {
+        tvChat.appendText("[Whispered to " + clientThread.getUname() + ": " + msg + "]\n");
+        clientThread.getOutput().println("[Server whispered to you: " + msg + "]");
     }
 }
