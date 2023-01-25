@@ -71,11 +71,7 @@ public class ClientThread extends Thread {
 
                         while (onLoop) {
                             msg = input.readLine();
-                            if (msg.equals("\\exit")) {
-                                onLoop = false;
-                            } else {
-                                server.broadcast(this, uname, msg);
-                            }
+                            server.broadcast(this, uname, msg);
                         }
                     } catch (IOException | NullPointerException e) {
                         System.out.println(e);

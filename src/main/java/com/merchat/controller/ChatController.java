@@ -123,13 +123,9 @@ public class ChatController {
     public void onTxtChatKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             if (!txtChat.getText().equals("")) {
-                if (!txtChat.getText().equals("\\exit")) {
-                    tvChat.appendText(txtChat.getText() + "\n");
-                    output.println(txtChat.getText());
-                    txtChat.setText("");
-                } else {
-                    onBtnGoBackClicked();
-                }
+                tvChat.appendText(txtChat.getText() + "\n");
+                output.println(txtChat.getText());
+                txtChat.setText("");
             }
         }
     }

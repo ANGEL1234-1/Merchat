@@ -146,18 +146,14 @@ public class HostChatController {
     public void onTxtChatKeyPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             if (!txtChat.getText().equals("")) {
-                if (!txtChat.getText().equals("\\exit")) {
-                    if (rbtSpeak.isSelected()) {
-                        tvChat.appendText(txtChat.getText() + "\n");
-                        broadcast(username, txtChat.getText());
-                    } else {
-                        tvChat.appendText("SERVER: " + txtChat.getText().toUpperCase() + "\n");
-                        broadcast("SERVER", txtChat.getText().toUpperCase());
-                    }
-                    txtChat.setText("");
+                if (rbtSpeak.isSelected()) {
+                    tvChat.appendText(txtChat.getText() + "\n");
+                    broadcast(username, txtChat.getText());
                 } else {
-                    onBtnGoBackClicked();
+                    tvChat.appendText("SERVER: " + txtChat.getText().toUpperCase() + "\n");
+                    broadcast("SERVER", txtChat.getText().toUpperCase());
                 }
+                txtChat.setText("");
             }
         }
     }

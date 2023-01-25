@@ -9,8 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="05d3fe5e-e3ac-4ac0-9cde-f03ceaa744bc" name="Changes" comment="fix: Fixed bug that made the maximum connections the amount specified minus 1 (i.e. if 1 connection was specified 0 connections were available, if 3 were then only 2 were available)">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/controller/HostChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchat/model/ClientThread.java" afterDir="false" />
     </list>
@@ -102,7 +102,7 @@
       <workItem from="1674220109064" duration="1045000" />
       <workItem from="1674474066578" duration="4819000" />
       <workItem from="1674561180585" duration="3584000" />
-      <workItem from="1674630885530" duration="2408000" />
+      <workItem from="1674630885530" duration="3215000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Added the possibility of hosting a chat">
       <created>1673959939192</created>
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674632554561</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix: Fixed bug that made the maximum connections the amount specified minus 1 (i.e. if 1 connection was specified 0 connections were available, if 3 were then only 2 were available)">
+      <created>1674633420692</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674633420692</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +215,8 @@
     <MESSAGE value="feat: Added (provisional) icon to application" />
     <MESSAGE value="fix: username can no longer contain spaces (this solves the problem of &quot;invisible&quot; names)" />
     <MESSAGE value="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: BREAKING CHANGE Added advance hosting and join options. Can now define password, max connections, port and server name." />
+    <MESSAGE value="fix: Fixed bug that made the maximum connections the amount specified minus 1 (i.e. if 1 connection was specified 0 connections were available, if 3 were then only 2 were available)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: Fixed bug that made the maximum connections the amount specified minus 1 (i.e. if 1 connection was specified 0 connections were available, if 3 were then only 2 were available)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
